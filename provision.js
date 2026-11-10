@@ -43,7 +43,7 @@ export class Provisioner {
       const target=path.join(this.dataDir,'downloads',asset.file);
       let valid=false;try{const {readFile}=await import('node:fs/promises');valid=createHash('sha256').update(await readFile(target)).digest('hex')===asset.sha256}catch{}
       if(!valid){
-        const response=await fetch(`https://github.com/podman-container-tools/podman/releases/download/${RELEASE}/${asset.file}`,{signal:AbortSignal.any([this.controller.signal,AbortSignal.timeout(600000)])});
+        const response=await fetch(`https://github.com/containers/podman/releases/download/${RELEASE}/${asset.file}`,{signal:AbortSignal.any([this.controller.signal,AbortSignal.timeout(600000)])});
         if(!response.ok)throw new Error(`Installer download failed: HTTP ${response.status}`);
         const chunks=[];let size=0;for await(const chunk of response.body){size+=chunk.length;if(size>160*1024*1024)throw new Error('Installer exceeds size limit');chunks.push(chunk);this.state.bytes=size}
         const bytes=Buffer.concat(chunks);if(createHash('sha256').update(bytes).digest('hex')!==asset.sha256)throw new Error('Installer SHA-256 mismatch; installation blocked');
