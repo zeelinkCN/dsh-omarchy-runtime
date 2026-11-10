@@ -4,7 +4,7 @@ A DSH sidebar plugin for on-demand Linux workspaces. **Version 0.1.0 is an Arch 
 
 ## Install from an open-source repository
 
-1. Clone this repository or download and unpack its release archive.
+1. Download the [v0.1.0 plugin ZIP](https://github.com/zeelinkCN/dsh-omarchy-runtime/releases/download/v0.1.0/dsh-omarchy-runtime-v0.1.0.zip) and extract it (or clone this repository).
 2. In DSH, open **Plugins → Add → local bundle** and select the package directory containing `package.json`. DSH installs its manifest and registers the Host and Client components. No `npm install`, build command, or background daemon is needed for the DSH plugin itself.
 3. Open **Omarchy runtime** from the left sidebar. Select **Prepare runtime**. The plugin uses an existing Docker or Podman CLI if available. Otherwise it downloads the pinned [Podman v6.1.4 release](https://github.com/containers/podman/releases/tag/v6.1.4), verifies the release SHA-256, and opens the OS installer. Complete any system authorization, then select **Prepare runtime** again to start a dedicated Podman VM and fetch `docker.io/library/archlinux:base`.
 
