@@ -1,0 +1,4 @@
+- insert:
+    - id: omarchy-runtime
+      name: '@local/omarchy-runtime'
+      config: {}

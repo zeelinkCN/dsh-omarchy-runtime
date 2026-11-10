@@ -1,0 +1,14 @@
+{
+  "name": "@local/omarchy-runtime",
+  "version": "0.1.0",
+  "description": "Omarchy runtime for DSH: portable Linux workspaces, managed setup and a sidebar control panel.",
+  "license": "MIT",
+  "repository": {"type": "git", "url": "git+https://github.com/zeelinkCN/dsh-omarchy-runtime.git"},
+  "keywords": ["deepseek-harness", "dsh-plugin", "arch-linux", "omarchy", "workspace"],
+  "type": "module",
+  "exports": {".": "./index.js", "./client": "./client.js", "./runtime": "./runtime.js", "./locale/*.json": "./locale/*.json", "./icon": "./icon.svg"},
+  "files": ["index.js", "client.js", "runtime.js", "provision.js", "cordis.patch.yml", "locale/*.json", "icon.svg", "README.md", "LICENSE"],
+  "scripts": {"test": "node --test *.test.js", "check": "node --check index.js && node --check client.js && node --check runtime.js && node --check provision.js"},
+  "engines": {"node": ">=22", "dsh": ">=0.2.2-rc.1 <0.3.0"},
+  "dsh": {"bundle": {"patch": "./cordis.patch.yml"}, "client": {"platform": "web", "immediately": true, "inject": ["@deepseek-ai/dsh-client-ui-layout", "@deepseek-ai/dsh-client-ui-sidebar"]}}
+}
